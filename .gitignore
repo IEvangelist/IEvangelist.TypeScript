@@ -1,3 +1,4 @@
+*.js
 node_modules/
 built/*
 tests/cases/rwc/*
@@ -50,9 +51,6 @@ coverage/
 internal/
 **/.DS_Store
 .settings
-**/.vs
-**/.vscode
-!**/.vscode/tasks.json
 !tests/cases/projects/projectOption/**/node_modules
 !tests/cases/projects/NodeModulesSearch/**/*
 !tests/baselines/reference/project/nodeModules*/**/*
