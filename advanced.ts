@@ -29,6 +29,7 @@ namespace IEvangelist.Intersections {
         }
     }
     var david = extend(new Person("David Pine"), new ConsoleLogger());
+    
     var name = david.name;
     david.log();
 }
@@ -59,7 +60,7 @@ namespace IEvangelist.Unions {
         // ...
     }
     
-    // indentedString = unionPadLeft("Hello world", true); // errors during compilation
+    //indentedString = unionPadLeft("Hello world", true); // errors during compilation
 
     // More on union types...
 
@@ -80,7 +81,7 @@ namespace IEvangelist.Unions {
     let pet = getSmallPet();
 
     pet.layEggs(); // okay
-    // pet.swim();    // errors
+    //pet.swim();    // errors
 
     // Each of these property accesses will cause an error
     // if (pet.swim) {
@@ -117,7 +118,7 @@ namespace IEvangelist.Unions {
     }
 }
 
-namespace IEvangelist.TypeGaurds {
+namespace IEvangelist.TypeGuards {
 
     // Leveraging "typeof"
 
@@ -141,7 +142,7 @@ namespace IEvangelist.TypeGaurds {
 
     // TypeScript can do this for primitive types automatically
 
-    function builtitPadLeft(value: string, padding: string | number) {
+    function builtinPadLeft(value: string, padding: string | number) {
         if (typeof padding === "number") {
             return Array(padding + 1).join(" ") + value;
         }
@@ -226,11 +227,12 @@ namespace IEvangelist.TypeAliases {
         name: string;
     }
 
-    var people: LinkedList<Person>;
-    var s = people.name;
-    var s = people.next.name;
-    var s = people.next.next.name;
-    var s = people.next.next.next.name;
+    let people: LinkedList<Person>;
+    var n1 = people.name;
+    var n2 = people.next.name;
+    var n3 = people.next.next.name;
+    var n4 = people.next.next.next.name;
+    //people.next.next.
 }
 
 namespace IEvangelist.StringLiterals {
@@ -245,7 +247,7 @@ namespace IEvangelist.StringLiterals {
             }
         }
     }
-
+    
     let button = new UIElement();
     button.animate(0, 0, "ease-in");
     //button.animate(0, 0, "uneasy"); // error: "uneasy" is not allowed here
@@ -331,8 +333,8 @@ namespace IEvangelist.PolymorphicThis {
 
 namespace IEvangelist.IndexedTypes {
 
-    // The "keyof" ensures that whatever the consumer provides to for "K",
-    // that it property of the given type "T".
+    // The "keyof" ensures that whatever the consumer provides for "K",
+    // that it is a property of the given type "T".
 
     function pluck<T, K extends keyof T>(obj: T, names: K[]): T[K][] {
         return names.map(name => obj[name]);
@@ -345,7 +347,7 @@ namespace IEvangelist.IndexedTypes {
 
     let person: Person = {
         name: 'David',
-        age: 32
+        age: 33
     };
 
     let strings: string[] = pluck(person, ['name']); // ok, string[]
@@ -360,7 +362,7 @@ namespace IEvangelist.IndexedTypes {
 
     let name: string = getProperty(person, 'name');
     let age: number = getProperty(person, 'age');
-    // let unknown = getProperty(person, 'unknown');
+    //let unknown = getProperty(person, 'unknown');
 }
 
 namespace IEvangelist.MappedTypes {
@@ -393,6 +395,6 @@ namespace IEvangelist.MappedTypes {
         [P in keyof T]?: T[P];
     }
 
-    var person: Partial<Person>;
-    person
+    var partialPerson: Partial<Person> = { name: 'David' };
+    var readonlyPerson: Readonly<Person> = { name: 'David', age: 33 };
 }

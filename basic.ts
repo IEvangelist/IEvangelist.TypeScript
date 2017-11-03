@@ -4,7 +4,7 @@ interface Foo {
 
 class Bar implements Foo {
     nonsense(): string {
-        return "Hello, Chicago Code Camp!";
+        return "Hello, Prairie.Code()!";
     }
 }
 
